@@ -1,5 +1,6 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import { View, Text, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { Stack, useRouter } from 'expo-router';
 
 const Home = () => {
   return (
