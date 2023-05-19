@@ -22,7 +22,12 @@ const Home = () => {
       <ChooseAppliance />
       <Filter />
       <List />
-      <Card />
+      <Card
+        title="Panasonic Fridge"
+        image={require("../assets/images/fridge.jpg")}
+        price="$4000"
+        description="description"
+      />
     </View>
   );
 };
