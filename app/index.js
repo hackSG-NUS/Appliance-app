@@ -12,6 +12,7 @@ import Category from "../screens/Category";
 import ChooseAppliance from "../screens/ChooseAppliance";
 import Filter from "../screens/Filter";
 import List from "../screens/List";
+import Card from "../components/Card";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <ChooseAppliance />
       <Filter />
       <List />
+      <Card />
     </View>
   );
 };
