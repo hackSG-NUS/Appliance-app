@@ -21,6 +21,9 @@ const Home = () => {
   const router = useRouter();
 
   return (
+    <View>
+      <Liked />
+    </View>
     <SafeAreaView>
 
       <Stack.Screen 
@@ -51,3 +54,16 @@ const Home = () => {
 };
 
 export default Home;
+
+// {/* <Category />
+//       <ChooseAppliance />
+//       <Filter />
+//       <List />
+//       <Card
+//         title="Panasonic Fridge"
+//         image={require("../assets/images/fridge.jpg")}
+//         price="$4000"
+//         description="description"
+//         id="hYYCPieoN9AFKbX7Wodf"
+//         def={true}
+//       /> */}
