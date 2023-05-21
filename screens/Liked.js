@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,26 +15,29 @@ const Liked = () => {
   const getData = async () => {
     const q = query(collection(db, "appliances"), where("liked", "==", true));
     const querySnapshot = await getDocs(q);
+    const temp = [];
     querySnapshot.forEach((doc) => {
-      // setData([...data].push({doc.id: doc.data()}));
-      setData([...data].push(doc));
-      console.log(doc.id, " => ", doc.data());
+      temp.push({ id: doc.id, data: doc.data() });
     });
+    setData(temp);
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <View>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={{ backgroundColor: "red", height: 100, width: 100 }}
         onPress={getData}
-      ></TouchableOpacity>
+      ></TouchableOpacity> */}
       <FlatList
         data={data}
         renderItem={({ item }) => {
-          const d = item.data();
           return (
             <View>
-              <Text>d.title</Text>
+              <Text>{item.data.title}</Text>
             </View>
           );
         }}
