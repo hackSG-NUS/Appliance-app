@@ -18,16 +18,12 @@ const Card = ({ title, image, price, description, id }) => {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
-        {/* <Image
-          source={require("../assets/icons/bookmark-white.png")}
-          style={styles.bookmark}
-        /> */}
         <Bookmark id={id} />
       </View>
-      <Image source={image} style={styles.image} />
+      <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.descriptionContainer}>
         <Text style={styles.price}>{price}</Text>
-        <Text>asdsadsadsadsadasdsadsadsadasdsadasdsadasdsadasdsa</Text>
+        <Text>{description}</Text>
       </View>
     </View>
   );

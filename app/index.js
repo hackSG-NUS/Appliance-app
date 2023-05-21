@@ -18,19 +18,21 @@ const Home = () => {
   return (
     <View>
       <Liked />
-      <Category />
-      <ChooseAppliance />
-      <Filter />
-      <List />
-      <Card
-        title="Panasonic Fridge"
-        image={require("../assets/images/fridge.jpg")}
-        price="$4000"
-        description="description"
-        id="hYYCPieoN9AFKbX7Wodf"
-      />
     </View>
   );
 };
 
 export default Home;
+
+// {/* <Category />
+//       <ChooseAppliance />
+//       <Filter />
+//       <List />
+//       <Card
+//         title="Panasonic Fridge"
+//         image={require("../assets/images/fridge.jpg")}
+//         price="$4000"
+//         description="description"
+//         id="hYYCPieoN9AFKbX7Wodf"
+//         def={true}
+//       /> */}

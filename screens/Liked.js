@@ -1,22 +1,27 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, createContext } from "react";
 import {
   StyleSheet,
   Text,
   View,
   FlatList,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
 
 import { db } from "../firebase";
+import Card from "../components/Card";
 
-const Liked = () => {
+export const UserContext = createContext(true);
+export default Liked = () => {
   const [data, setData] = useState([]);
   const getData = async () => {
     const q = query(collection(db, "appliances"), where("liked", "==", true));
     const querySnapshot = await getDocs(q);
     const temp = [];
     querySnapshot.forEach((doc) => {
+      // console.log(doc.data());
       temp.push({ id: doc.id, data: doc.data() });
     });
     setData(temp);
@@ -24,28 +29,70 @@ const Liked = () => {
 
   useEffect(() => {
     getData();
+    // console.log(data);
   }, []);
 
+  const [fontsLoaded, error] = useFonts({
+    Lato_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View>
-      {/* <TouchableOpacity
-        style={{ backgroundColor: "red", height: 100, width: 100 }}
-        onPress={getData}
-      ></TouchableOpacity> */}
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Search for more Appliances</Text>
+      </TouchableOpacity>
       <FlatList
         data={data}
         renderItem={({ item }) => {
           return (
-            <View>
-              <Text>{item.data.title}</Text>
-            </View>
+            <Card
+              title={item.data.title}
+              description={item.data.description}
+              image={item.data.image}
+              price={item.data.price}
+              id={item.id}
+            />
           );
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default Liked;
+const styles = StyleSheet.create({
+  button: {
+    borderRadius: 100,
+    borderWidth: 4,
+    marginVertical: 20,
+    padding: 10,
+  },
+  buttonText: {
+    fontFamily: "Lato_400Regular",
+    fontSize: 24,
+  },
+  container: {
+    alignItems: "center",
+  },
+});
 
-const styles = StyleSheet.create({});
+// {/* <FlatList
+//         data={data}
+//         renderItem={({ item }) => {
+//           return (
+//             <View>
+//               <Card
+//                 title={item.data.title}
+//                 description={item.data.description}
+//                 image={item.data.image}
+//                 price={item.data.price}
+//                 id={item.id}
+//               />
+//               <Text>{item.title}</Text>
+//             </View>
+//           );
+//         }}
+//       /> */}
