@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     flexDirection: "column",
     alignItems: "center",
+    alignSelf: "center",
   },
   descriptionContainer: {
     alignSelf: "flex-start",
