@@ -13,22 +13,28 @@ import ChooseAppliance from "../screens/ChooseAppliance";
 import Filter from "../screens/Filter";
 import List from "../screens/List";
 import Card from "../components/Card";
+import Picker from "../components/Picker.js";
+
+import { ScrollView } from "react-native";
 
 const Home = () => {
   return (
-    <View>
+    <ScrollView>
+      
       <Liked />
       <Category />
       <ChooseAppliance />
       <Filter />
       <List />
+      <Picker/>
       <Card
         title="Panasonic Fridge"
         image={require("../assets/images/fridge.jpg")}
         price="$4000"
         description="description"
       />
-    </View>
+      
+    </ScrollView>
   );
 };
 
