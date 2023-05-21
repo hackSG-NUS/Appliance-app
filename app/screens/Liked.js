@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
+import { Link } from "expo-router";
 
-import { db } from "../firebase";
+import { db } from "../../firebase";
 import Card from "../components/Card";
 
 export const UserContext = createContext(true);
@@ -45,19 +46,23 @@ export default Liked = () => {
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Search for more Appliances</Text>
       </TouchableOpacity>
+
       <FlatList
         data={data}
         renderItem={({ item }) => {
           return (
-            <Card
-              title={item.data.title}
-              description={item.data.description}
-              image={item.data.image}
-              price={item.data.price}
-              id={item.id}
-            />
+            <View>
+              <Card
+                title={item.data.title}
+                description={item.data.description}
+                image={item.data.image}
+                price={item.data.price}
+                id={item.id}
+              />
+            </View>
           );
         }}
+        ListFooterComponent={<View style={{ height: 300 }} />}
       />
     </SafeAreaView>
   );
