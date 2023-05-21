@@ -14,15 +14,19 @@ import ChooseAppliance from "../screens/ChooseAppliance";
 import Filter from "../screens/Filter";
 import List from "../screens/List";
 import Card from "../components/Card";
+
 import { ScrollView } from "react-native-gesture-handler";
+import Picker from "../components/Picker.js";
 
 const Home = () => {
   
   const router = useRouter();
 
   return (
-    <View>
+    <ScrollView>
+      
       <Liked />
+
     </View>
     <SafeAreaView>
 
@@ -36,6 +40,7 @@ const Home = () => {
 
       <ScrollView showsVerticalScrollIndicator= {false}>
         <View style= {{ flex: 1, padding: 50 }}>
+          <Picker/>
           <Liked />
           <Category />
           <ChooseAppliance />
@@ -50,6 +55,7 @@ const Home = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
+
   );
 };
 
