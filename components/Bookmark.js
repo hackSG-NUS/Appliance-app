@@ -1,23 +1,32 @@
 import { TouchableOpacity, StyleSheet, Image } from "react-native";
-import { React, useState } from "react";
-import { white } from "../assets/icons/white_bookmark.png";
+import { React, useState, useContext } from "react";
+import { doc, updateDoc } from "firebase/firestore";
 
-export default function Bookmark() {
-  const [clicked, setClicked] = useState(false);
-  const handlePress = () => {
+import { db } from "../firebase";
+import { UserContext } from "../screens/Liked";
+
+export default function Bookmark({ id }) {
+  const def = useContext(UserContext);
+  const [clicked, setClicked] = useState(def);
+
+  const handlePress = async () => {
+    const likedRef = doc(db, "appliances", id);
+    await updateDoc(likedRef, {
+      liked: !clicked,
+    });
     setClicked(!clicked);
   };
 
   return (
     <TouchableOpacity onPress={handlePress}>
-      {clicked ? (
+      {!clicked ? (
         <Image
-          source={require("../assets/icons/black_bookmark.png")}
+          source={require("../assets/icons/white_bookmark.png")}
           style={styles.bookmark}
         />
       ) : (
         <Image
-          source={require("../assets/icons/white_bookmark.png")}
+          source={require("../assets/icons/black_bookmark.png")}
           style={styles.bookmark}
         />
       )}

@@ -5,7 +5,7 @@ import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
 import Bookmark from "./Bookmark";
 // import { AppLoading } from "expo";
 
-const Card = ({ title, image, price, description }) => {
+const Card = ({ title, image, price, description, id }) => {
   const [fontsLoaded, error] = useFonts({
     Lato_400Regular,
   });
@@ -18,16 +18,12 @@ const Card = ({ title, image, price, description }) => {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
-        {/* <Image
-          source={require("../assets/icons/bookmark-white.png")}
-          style={styles.bookmark}
-        /> */}
-        <Bookmark />
+        <Bookmark id={id} />
       </View>
-      <Image source={image} style={styles.image} />
+      <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.descriptionContainer}>
         <Text style={styles.price}>{price}</Text>
-        <Text>asdsadsadsadsadasdsadsadsadasdsadasdsadasdsadasdsa</Text>
+        <Text>{description}</Text>
       </View>
     </View>
   );
@@ -53,6 +49,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     flexDirection: "column",
     alignItems: "center",
+    alignSelf: "center",
   },
   descriptionContainer: {
     alignSelf: "flex-start",
