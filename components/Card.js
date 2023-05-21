@@ -5,7 +5,7 @@ import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
 import Bookmark from "./Bookmark";
 // import { AppLoading } from "expo";
 
-const Card = ({ title, image, price, description }) => {
+const Card = ({ title, image, price, description, id }) => {
   const [fontsLoaded, error] = useFonts({
     Lato_400Regular,
   });
@@ -22,7 +22,7 @@ const Card = ({ title, image, price, description }) => {
           source={require("../assets/icons/bookmark-white.png")}
           style={styles.bookmark}
         /> */}
-        <Bookmark />
+        <Bookmark id={id} />
       </View>
       <Image source={image} style={styles.image} />
       <View style={styles.descriptionContainer}>

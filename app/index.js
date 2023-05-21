@@ -27,6 +27,7 @@ const Home = () => {
         image={require("../assets/images/fridge.jpg")}
         price="$4000"
         description="description"
+        id="hYYCPieoN9AFKbX7Wodf"
       />
     </View>
   );

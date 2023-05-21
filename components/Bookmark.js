@@ -1,10 +1,17 @@
 import { TouchableOpacity, StyleSheet, Image } from "react-native";
 import { React, useState } from "react";
-import { white } from "../assets/icons/white_bookmark.png";
+import { doc, updateDoc } from "firebase/firestore";
 
-export default function Bookmark() {
+import { db } from "../firebase";
+
+export default function Bookmark({ id }) {
   const [clicked, setClicked] = useState(false);
-  const handlePress = () => {
+
+  const handlePress = async () => {
+    const likedRef = doc(db, "appliances", id);
+    await updateDoc(likedRef, {
+      liked: !clicked,
+    });
     setClicked(!clicked);
   };
 
