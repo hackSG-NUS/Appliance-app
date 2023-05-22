@@ -9,14 +9,16 @@ import {
 } from "react-native";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 
 import { db } from "../../firebase";
 import Card from "../components/Card";
 
 export const UserContext = createContext(true);
+
 export default Liked = () => {
   const [data, setData] = useState([]);
+  const navigation = useRouter();
   const getData = async () => {
     const q = query(collection(db, "appliances"), where("liked", "==", true));
     const querySnapshot = await getDocs(q);
@@ -43,7 +45,10 @@ export default Liked = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.push("/screens/ChooseAppliance")}
+      >
         <Text style={styles.buttonText}>Search for more Appliances</Text>
       </TouchableOpacity>
 
