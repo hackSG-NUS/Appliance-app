@@ -1,11 +1,21 @@
 import { Background } from "@react-navigation/elements";
-import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { React, useState, useEffect } from "react";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
-import Bookmark from "./Bookmark";
-// import { AppLoading } from "expo";
+import { doc, updateDoc } from "firebase/firestore";
 
-const Card = ({ title, image, price, description, id }) => {
+import { db } from "../firebase";
+
+const Card = ({ title, image, price, energycost, id, liked, ticks }) => {
+  const [clicked, setClicked] = useState(liked);
+
+  const handlePress = async () => {
+    const likedRef = doc(db, "appliances", id);
+    await updateDoc(likedRef, {
+      liked: !clicked,
+    });
+    setClicked(!clicked);
+  };
   const [fontsLoaded, error] = useFonts({
     Lato_400Regular,
   });
@@ -14,16 +24,41 @@ const Card = ({ title, image, price, description, id }) => {
     return null;
   }
 
+  const arr = [];
+  for (let i = 0; i < ticks; i++) {
+    arr.push(1);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
-        <Bookmark id={id} />
+        <TouchableOpacity onPress={handlePress}>
+          {!clicked ? (
+            <Image
+              source={require("../assets/icons/white_bookmark.png")}
+              style={styles.bookmark}
+            />
+          ) : (
+            <Image
+              source={require("../assets/icons/black_bookmark.png")}
+              style={styles.bookmark}
+            />
+          )}
+        </TouchableOpacity>
       </View>
       <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.descriptionContainer}>
         <Text style={styles.price}>{price}</Text>
-        <Text>{description}</Text>
+        <Text>Annual Cost: {energycost}</Text>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          {arr.map((x) => (
+            <Image
+              source={require("../assets/icons/tick.png")}
+              style={{ height: 20, width: 20 }}
+            />
+          ))}
+        </View>
       </View>
     </View>
   );
@@ -43,7 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: "white",
     width: 325,
-    height: 450,
+    height: 500,
     margin: 10,
     borderColor: "black",
     borderWidth: 3,
@@ -65,7 +100,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     marginTop: 15,
     marginLeft: 20,
     fontFamily: "Lato_400Regular",
@@ -73,5 +108,6 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
     alignContent: "center",
+    marginHorizontal: 35,
   },
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import { React, createContext } from "react";
 import {
   View,
   Text,
@@ -17,6 +17,8 @@ import Filter from "./screens/Filter";
 import List from "./screens/List";
 import Card from "../components/Card";
 
+export const BookmarkContext = createContext(true);
+
 const Home = () => {
   return (
     <SafeAreaView>
@@ -28,7 +30,7 @@ const Home = () => {
         }}
       />
       <View>
-        <Liked />
+        <List />
       </View>
     </SafeAreaView>
   );

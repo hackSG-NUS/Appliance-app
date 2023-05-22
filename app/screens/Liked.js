@@ -58,10 +58,11 @@ export default Liked = () => {
           return (
             <Card
               title={item.data.title}
-              description={item.data.description}
+              energycost={item.data.energycost}
               image={item.data.image}
               price={item.data.price}
               id={item.id}
+              ticks={item.data.ticks}
             />
           );
         }}
