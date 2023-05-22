@@ -7,51 +7,30 @@ import {
   Image,
 } from "react-native";
 import { Stack, useRouter } from "expo-router";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
+
 import { COLORS } from "../constants/";
-import Liked from "../screens/Liked";
-import Category from "../screens/Category";
-import ChooseAppliance from "../screens/ChooseAppliance";
-import Filter from "../screens/Filter";
-import List from "../screens/List";
+import Liked from "./screens/Liked";
+import Category from "./screens/Category";
+import ChooseAppliance from "./screens/ChooseAppliance";
+import Filter from "./screens/Filter";
+import List from "./screens/List";
 import Card from "../components/Card";
 
-import { FlatList, ScrollView } from "react-native-gesture-handler";
-import Picker from "../components/Picker.js";
-
 const Home = () => {
-  
-  const router = useRouter();
-
   return (
     <SafeAreaView>
-      
-      <Stack.Screen 
+      <Stack.Screen
         options={{
           headerStyle: { backgroundColor: COLORS.lightWhite },
           headerShadowVisible: false,
-          headerTitle: "Welcome"
+          headerTitle: "Welcome",
         }}
       />
-
-      <ScrollView showsVerticalScrollIndicator= {false}>
+      <View>
         <Liked />
-        <View style= {{ flex: 1, padding: 50 }}>
-          <Picker/>
-          <Liked />
-          <Category />
-          <ChooseAppliance />
-          <Filter />
-          <List />
-          <Card
-            title="Panasonic Fridge"
-            image={require("../assets/images/fridge.jpg")}
-            price="$4000"
-            description="description"
-          />
-        </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
-
   );
 };
 
