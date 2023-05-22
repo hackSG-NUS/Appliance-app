@@ -1,8 +1,12 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const ChooseAppliance = () => {
-  return <Text>Choose your appliance</Text>;
+  return (
+    <View>
+      <Text>Choose your appliance</Text>
+    </View>
+  );
 };
 
 export default ChooseAppliance;
