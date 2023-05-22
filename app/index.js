@@ -15,7 +15,7 @@ import Filter from "../screens/Filter";
 import List from "../screens/List";
 import Card from "../components/Card";
 
-import { ScrollView } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import Picker from "../components/Picker.js";
 
 const Home = () => {
@@ -23,13 +23,8 @@ const Home = () => {
   const router = useRouter();
 
   return (
-    <ScrollView>
-      
-      <Liked />
-
-    </View>
     <SafeAreaView>
-
+      
       <Stack.Screen 
         options={{
           headerStyle: { backgroundColor: COLORS.lightWhite },
@@ -39,6 +34,7 @@ const Home = () => {
       />
 
       <ScrollView showsVerticalScrollIndicator= {false}>
+        <Liked />
         <View style= {{ flex: 1, padding: 50 }}>
           <Picker/>
           <Liked />

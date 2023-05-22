@@ -10,11 +10,16 @@ import {
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
 
+import { useRouter } from "expo-router";
+
 import { db } from "../firebase";
 import Card from "../components/Card";
 
+
 export const UserContext = createContext(true);
 export default Liked = () => {
+  const router = useRouter();
+  const handleSearchPress = () => { router.push('../screens/ChooseAppliance'); }
   const [data, setData] = useState([]);
   const getData = async () => {
     const q = query(collection(db, "appliances"), where("liked", "==", true));
@@ -42,10 +47,14 @@ export default Liked = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity 
+        style={styles.button}
+        onPress={handleSearchPress}
+      >
         <Text style={styles.buttonText}>Search for more Appliances</Text>
       </TouchableOpacity>
       <FlatList
+        horizontal
         data={data}
         renderItem={({ item }) => {
           return (
