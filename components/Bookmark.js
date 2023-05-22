@@ -3,10 +3,10 @@ import { React, useState, useContext } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 
 import { db } from "../firebase";
-import { UserContext } from "../app/screens/Liked";
+import { BookmarkContext } from "../app/index";
 
-export default function Bookmark({ id }) {
-  const def = useContext(UserContext);
+export default function Bookmark({ id, liked }) {
+  const def = useContext(BookmarkContext);
   const [clicked, setClicked] = useState(def);
 
   const handlePress = async () => {
