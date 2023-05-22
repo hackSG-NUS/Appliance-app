@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, StyleSheet, View, TextInput, Button } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-const PickerDemo = () => {
+const Picker = () => {
   const [currency, setCurrency] = useState("US Dollar");
   const [pirorties, setPirority] = useState("Peformance");
 
@@ -109,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PickerDemo;
+export default Picker;

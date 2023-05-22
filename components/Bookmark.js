@@ -3,7 +3,7 @@ import { React, useState, useContext } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 
 import { db } from "../firebase";
-import { UserContext } from "../screens/Liked";
+import { UserContext } from "../app/screens/Liked";
 
 export default function Bookmark({ id }) {
   const def = useContext(UserContext);
