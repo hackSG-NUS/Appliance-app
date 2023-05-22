@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, StyleSheet, View, TextInput, Button } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-const Picker = () => {
+const Pick = () => {
   const [currency, setCurrency] = useState("US Dollar");
   const [pirorties, setPirority] = useState("Peformance");
 
@@ -23,14 +23,14 @@ const Picker = () => {
         <Text style={styles.formLabel}>
           Most important when choosing an Applicance?
         </Text>
-        <Picker
+        {/* <Picker
           selectedValue={pirorties}
           onValueChange={(currentPirority) => setPirority(currentPirority)}
         >
           <Picker.Item label="Performance" value="Peformance" />
           <Picker.Item label="Ticket Price" value="TicketPrice" />
           <Picker.Item label="Efficiency" value="Efficiency" />
-        </Picker>
+        </Picker> */}
 
         <Picker
           selectedValue={currency}
@@ -109,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Picker;
+export default Pick;

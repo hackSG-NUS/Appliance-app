@@ -10,12 +10,15 @@ import { Stack, useRouter } from "expo-router";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 
 import { COLORS } from "../constants/";
+
+import CustForm from "./screens/CustForm";
 import Liked from "./screens/Liked";
 import Category from "./screens/Category";
 import ChooseAppliance from "./screens/ChooseAppliance";
 import Filter from "./screens/Filter";
 import List from "./screens/List";
 import Card from "../components/Card";
+import Picker from "../components/Picker";
 
 const Home = () => {
   return (
@@ -28,6 +31,7 @@ const Home = () => {
         }}
       />
       <View>
+        <CustForm/>
         <Liked />
       </View>
     </SafeAreaView>
