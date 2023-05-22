@@ -6,8 +6,11 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+
 import { Stack, useRouter, Link } from "expo-router";
+
 import { ScrollView } from "react-native-gesture-handler";
+import Picker from "../components/Picker.js";
 
 import { COLORS } from "../constants/";
 import Liked from "./screens/Liked";
@@ -34,6 +37,7 @@ const Home = () => {
         <Liked />
       </View>
     </SafeAreaView>
+
   );
 };
 
