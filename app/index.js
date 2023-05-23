@@ -1,4 +1,4 @@
-import { React, createContext } from "react";
+import { React, createContext, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -23,6 +23,7 @@ import Picker from "../components/Picker";
 export const BookmarkContext = createContext(true);
 
 const Home = () => {
+  useEffect;
   return (
     <SafeAreaView>
       <Stack.Screen
@@ -33,12 +34,7 @@ const Home = () => {
         }}
       />
       <ScrollView>
-
-        <List />
-
-        <CustForm/>
         <Liked />
-
       </ScrollView>
     </SafeAreaView>
   );

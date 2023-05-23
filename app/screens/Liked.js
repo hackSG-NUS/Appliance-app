@@ -10,7 +10,7 @@ import {
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useFonts, Lato_400Regular } from "@expo-google-fonts/lato";
 
-import { useRouter } from "expo-router";
+import { useRouter, Stack } from "expo-router";
 
 import { db } from "../../firebase";
 import Card from "../../components/Card";
@@ -68,6 +68,9 @@ export default Liked = () => {
         }}
         contentContainerStyle={{ paddingLeft: 15 }}
       />
+      <TouchableOpacity onPress={getData}>
+        <Text>Refresh Bookmarks</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

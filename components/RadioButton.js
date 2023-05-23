@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginRight: 45,
+    marginLeft: 10,
   },
   radioButton: {
     height: 20,
@@ -39,6 +40,8 @@ const styles = StyleSheet.create({
   radioButtonText: {
     fontSize: 16,
     marginLeft: 16,
+    fontFamily: "Lato_400Regular",
+    margin: 5,
   },
 });
 
