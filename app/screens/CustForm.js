@@ -58,10 +58,10 @@ const CustForm = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Energy Savings Form</Text>
+      <Text style={{ fontSize: 24, padding: 12 }}>Energy Savings Form</Text>
 
       <View style={styles.viewStyle}>
-        <Text>
+        <Text style={styles.questionText}>
           What Applicance are you looking for?
         </Text>
         {lookingFor.map((item) => (
@@ -76,9 +76,8 @@ const CustForm = () => {
       </View>
 
       <View style={styles.viewStyle}>
-        <Text>
-          What is the most important factor when purchasing an Applicance?
-        </Text>
+        <Text style={{fontSize: 16}}>What is the most important factor when</Text>
+        <Text style={{fontSize: 16, paddingBottom: 10}}>purchasing an Applicance?</Text>
         {isLiked.map((item) => (
           <RadioButton
             onPress={() => onRadioBtnClick(item)}
@@ -91,7 +90,7 @@ const CustForm = () => {
       </View>
 
       <View style={styles.viewStyle}>
-        <Text>
+        <Text style={styles.questionText}>
           How sustainability conscious are you?
         </Text>
         {sustainability.map((item) => (
@@ -113,11 +112,13 @@ const styles = StyleSheet.create({
   viewStyle: {
     borderBottomWidth: 25, // whatever width you want of underline
     borderBottomColor: "#00000000",
+    justifyContent: "center",
   },
 
   container: {
     alignItems: "center",
     justifyContent: "center",
+    padding: 12
   },
 
   formLabel: {
@@ -176,6 +177,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 16,
   },
+  questionText: {
+    fontSize: 16,
+    padding: 10
+  }
 });
 
 export default CustForm;

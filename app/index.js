@@ -32,14 +32,14 @@ const Home = () => {
           headerTitle: "Welcome",
         }}
       />
-      <View>
+      <ScrollView>
 
         <List />
 
         <CustForm/>
         <Liked />
 
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
